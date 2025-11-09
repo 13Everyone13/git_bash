@@ -58,7 +58,7 @@ curl -X 'POST' \                            # POST — создать новог
   "lastName": "Tester",
   "email": "invalid@mail.com",
   "password": "qwerty123",
-```
   "phone": "123789",
+```
   "userStatus": 1
 }'
