@@ -1,9 +1,64 @@
 # Работа с git и bash
 
-Задача 1
+Я хочу поделиться командами bash, которые я использовал для выполнения задач во время обучения на курсе.
 
-[Bash1.txt](https://github.com/user-attachments/files/23432343/Bash1.txt)
-
-Задача 2
-
-[Bash2.txt](https://github.com/user-attachments/files/23432345/Bash2.txt)
+- [Управление файловой системой через командную строку](https://github.com/user-attachments/files/23432343/Bash1.txt)
+```bash
+cd ../Desktop/git_bash                 # Перейти в директорию git_bash на рабочем столе
+pwd                                    # Проверить текущую директорию
+mkdir test1                            # Создать директорию test1 внутри git_bash
+cd test1                               # Перейти в test1
+touch 1 2 3                            # Создать файлы 1, 2 и 3
+ls                                     # Просмотреть содержимое директории test1
+cd ..                                  # Вернуться в родительскую директорию
+mkdir test2                            # Создать директорию test2
+rmdir test2                            # Удалить пустую директорию test2
+rm test1/2                             # Удалить файл «2» внутри директории test1
+mkdir test3                            # Создать директорию test3
+touch test3/1 test3/2                  # Создать два файла внутри директории test3
+rm -r test3                            # Удалить директорию test3 вместе с содержимым
+mkdir test4                            # Создать директорию test4
+mv test1/1 test1/3 test4               # Переместить файлы 1 и 3 из test1 в test4
+echo -e "line\nline\nline" >> test4/1  # Добавить три строки в файл 1
+cat test4/1                            # Просмотреть содержимое файла 1
+echo -e "line\nline\nline" >> test4/3  # Добавить три строки в файл 3
+cat test4/1 test4/3                    # Просмотреть содержимое файлов 1 и 3 вместе
+nano test4/1                           # Открыть файл 1 в редакторе nano и внести правки вручную
+cat test4/1                            # Проверить обновлённое содержимое файла 1
+```
+- [Работа с файлами, процессами и сетевыми запросами через командную строку](https://github.com/user-attachments/files/23432345/Bash2.txt)
+```bash
+cd git_bash                                 # Перейти в директорию git_bash 
+mkdir test3                                 # Создать директорию test3
+echo -e "row1\nrow2\nrow3\nrow4" > test3/4  # Создать файл 4 с четырьмя строками
+echo -e "row1\nrow2\nrow3\nrow4" > test3/5  # Создать файл 5 с четырьмя строками
+echo -e "row1\nrow2\nrow3\nrow4" > test3/6  # Создать файл 6 с четырьмя строками
+grep "row2" test3/5                         # Найти строку "row2" в файле 5
+grep "row" test3/*                          # Найти все вхождения "row" во всех файлах директории test3
+grep -c "row" test3/6                       # Подсчитать количество строк, содержащих "row" в файле 6
+find test3 -name "5"                        # Найти файл с именем 5  
+find test3 -name "5" -exec rm {} \;         # Найти и удалить файл 5
+echo "test" > test3/4                       # Записать слово "test" в файл 4
+sed -i 's/test/fail/' test3/4               # Заменить слово "test" на "fail" в файле 4
+echo "test" >> test3/4                      # Добавить слово "test" в конец файла 4
+ps aux                                      # Посмотреть список запущенных процессов
+kill 666                                    # Попробовать завершить процесс с PID 666 (такого процесса нет)
+ping rusau.net                              # Проверить доступность сайта rusau.net
+ping -c 5 rusau.net                         # Попытка выполнить ping 5 раз (нужны права администратора)
+ping -n 5 rusau.net                         # Выполнить ping 5 раз с параметром -n
+curl -X GET https://petstore.swagger.io/v2/pet/findByStatus?status=pending  # Отправить GET-запрос к публичному API
+curl -X 'POST' \                            # POST — создать нового пользователя
+  'https://petstore.swagger.io/v2/user' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": 1,
+  "username": "QAtester",
+  "firstName": "Alexey",
+  "lastName": "Tester",
+  "email": "invalid@mail.com",
+  "password": "qwerty123",
+```
+  "phone": "123789",
+  "userStatus": 1
+}'
